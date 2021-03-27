@@ -1,20 +1,22 @@
-# Discord-Bot-Template
-Un projet bot Discord en discord.js v12 déjà prêt, avec handler. Plus qu'à coder vos commandes !
+# Discord Joke Bot
 
+## What it does
 
-# Comment Débuter ?
+This goal of this bot is to recommend jokes, using a dataset and a
+recommendation system based on correlation matrices.
 
-Le fichier index.js est complet, il à pour but  de lire les commandes qui seront crées dans le dossier ./commands.
-Les commandes seront lues dans le dossier commandes uniquement. Le nom de la commande est le nom du fichier de celle ci.
+## How to test it
 
-Par exemple le fichier ping.js sera sur Discord la commande _prefix_ping (_prefix_ étant le préfixe défini dans le fichier config.json)
-
-
-# Comment créer mon bot Discord ?
-
-Créez une application bot sur https://discord.com/developers/applications et récupérez le token pour le mettre sur la variable token dans le fichier config.json
-
-
-Créez votre code dans le dossier commands en format <nom>.js
-
-Un exemple de forme est dispo sur le fichier exemple.js
+First clone this repository:
+```shell
+git clone https://github.com/AlozoR/discord-joke-bot.git
+```
+Then, go inside the main directory:
+```shell
+cd discord-joke-bot
+```
+Go in the docker-compose file and replace the token with yours. <br/>
+You can run the bot with:
+```shell
+docker-compose up
+```
