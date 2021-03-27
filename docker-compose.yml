@@ -3,7 +3,7 @@ services:
   discord-bot:
     build: .
     environment:
-      TOKEN: ODI0MzcwNDk5OTQ1MzY1NTE1.YFuY2w.l_POLOKHsCWv7L2Fguz74kEje30
+      TOKEN: INSERT_TOKEN_HERE
 
   reco-flask-api:
     build: ./recosys
