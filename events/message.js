@@ -1,12 +1,16 @@
 const matcher = require('../matcher')
 const axios = require('axios')
 
-const URL = 'http://localhost:5000/api/'
+const URL = 'http://reco-flask-api:5000/api/'
+
+// API Requests =======================================================
 
 const getJoke = message => {
   axios.get(URL + 'get', {params: {user_id: message.author.id}}).then(response => {
     message.channel.send(response.data.joke)
     message.channel.send('Please rate this joke from -10 to 10')
+  }).catch(error => {
+    console.log('error')
   })
 }
 
@@ -29,6 +33,7 @@ const getJokes = (message, number, quality) => {
   })
 }
 
+// Messages handling ==================================================
 
 module.exports = (client, message) => {
   // Ignorer les messages du bot
@@ -36,7 +41,7 @@ module.exports = (client, message) => {
   matcher(message.content, cb => {
     switch (cb.intent) {
     case 'Hello':
-      message.channel.send('Hello!')
+      message.channel.send('Hello! I\'m your favourite joke bot! :smile:')
       break
     case 'Joke':
       getJoke(message)
@@ -50,10 +55,19 @@ module.exports = (client, message) => {
       postRate(message, rating)
       break
     case 'N jokes':
-      console.log(cb.entities.groups)
       const number = Number(cb.entities.groups.number)
       const quality = cb.entities.groups.quality
       getJokes(message, number, quality)
+      break
+    case 'React':
+      if (cb.entities.groups.negate === 'not') {
+        message.channel.send('I\'m sorry to disappoint you :cry:')
+      } else {
+        message.channel.send('Glad to hear that! :smiling_face_with_3_hearts:')
+      }
+      break
+    case 'Bye':
+      message.channel.send('Bye! Have a good day!')
       break
     default:
       message.channel.send('Not supported :/')
