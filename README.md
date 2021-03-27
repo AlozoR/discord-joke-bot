@@ -9,7 +9,7 @@ recommendation system based on correlation matrices.
 
 First clone this repository:
 ```shell
-git clone https://github.com/AlozoR/discord-joke-bot.git
+git clone --recurse-submodules https://github.com/AlozoR/discord-joke-bot.git
 ```
 Then, go inside the main directory:
 ```shell
